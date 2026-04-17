@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabbir Ahmed - AI Automation Engineer</title>
+    <script                       src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.5);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background: rgba(30, 41, 59, 0.9);
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .project-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #3b82f6;
+            padding: 0.75rem 2rem;
+            border: 2px solid #3b82f6;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-small {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .btn-small:hover {
+            background: rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+
+        /* Form */
+        .form-input {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: #e2e8f0;
+            width: 100%;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: rgba(30, 41, 59, 0.8);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(226, 232, 240, 0.5);
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section */
+        .section {
+            padding: 5rem 1rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            color: #94a3b8;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .skill-category-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #60a5fa;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            color: #cbd5e1;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 50%;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            color: #60a5fa;
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+        }
+
+        .social-link:hover {
+            background: rgba(59, 130, 246, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Hero gradient */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #60a5fa;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-tagline {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-950">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent cursor-pointer" onclick="scrollToSection('hero')">
+                SA
+            </div>
+            <div class="hidden md:flex gap-8 items-center">
+                <a href="#about" class="nav-link text-slate-300 hover:text-blue-400">About</a>
+                <a href="#skills" class="nav-link text-slate-300 hover:text-blue-400">Skills</a>
+                <a href="#projects" class="nav-link text-slate-300 hover:text-blue-400">Projects</a>
+                <a href="#contact" class="nav-link text-slate-300 hover:text-blue-400">Contact</a>
+                <button onclick="openAdminPanel()" class="btn-secondary">Admin</button>
+            </div>
+            <div class="md:hidden flex items-center gap-4">
+                <button onclick="openAdminPanel()" class="btn-small">Admin</button>
+                <button onclick="toggleMobileMenu()" class="text-slate-300 hover:text-blue-400 text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-700 bg-slate-900">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#about" class="block text-slate-300 hover:text-blue-400 py-2" onclick="toggleMobileMenu()">About</a>
+                <a href="#skills" class="block text-slate-300 hover:text-blue-400 py-2" onclick="toggleMobileMenu()">Skills</a>
+                <a href="#projects" class="block text-slate-300 hover:text-blue-400 py-2" onclick="toggleMobileMenu()">Projects</a>
+                <a href="#contact" class="block text-slate-300 hover:text-blue-400 py-2" onclick="toggleMobileMenu()">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-gradient min-h-screen flex items-center justify-center px-4 pt-20">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="fade-in-up mb-8">
+                <div class="flex justify-center mb-6">
+                    <div class="relative">
+                        <img id="profileImage" src="" alt="Profile Picture" class="w-32 h-32 rounded-full border-4 border-blue-500 shadow-lg object-cover transition-transform duration-300 hover:scale-105">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-20"></div>
+                    </div>
+                </div>
+                <h1 id="heroTitle" class="hero-title">
+                    Sabbir Ahmed
+                </h1>
+                <p id="heroSubtitle" class="hero-subtitle">
+                    AI Automation Engineer | n8n | API Integration
+                </p>
+                <p id="heroTagline" class="hero-tagline">
+                    I build intelligent automation systems using n8n, APIs, and AI to streamline business workflows.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="scrollToSection('projects')" class="btn-primary group">
+                        <span>View Projects</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
+                    </button>
+                    <button onclick="scrollToSection('contact')" class="btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact Me</span>
+                    </button>
+                </div>
+            </div>
+            <div class="mt-12 slide-in-left">
+                <i class="fas fa-automation text-blue-500 text-6xl opacity-20 animate-bounce"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-slate-900 bg-opacity-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title scroll-animate">About Me</h2>
+            <p class="section-subtitle scroll-animate">
+                Get to know who I am and what drives my passion
+            </p>
+            <div class="card p-8 scroll-animate">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1" id="aboutText">
+                        <p id="aboutParagraph1" class="text-slate-300 text-lg leading-relaxed mb-4">
+                            I'm a Computer Science and Engineering (CSE) student and a passionate automation enthusiast. With a deep interest in workflow automation and AI integration, I specialize in creating intelligent systems that solve real-world business problems.
+                        </p>
+                        <p id="aboutParagraph2" class="text-slate-300 text-lg leading-relaxed mb-4">
+                            My expertise lies in building robust automation workflows using n8n, integrating APIs, and leveraging webhooks to connect disparate systems. I'm proficient in JavaScript and Python, which allows me to create custom solutions tailored to specific automation needs.
+                        </p>
+                        <p id="aboutParagraph3" class="text-slate-300 text-lg leading-relaxed">
+                            I believe in the power of automation to transform businesses by reducing manual work, minimizing errors, and enabling teams to focus on high-value tasks. Every project I undertake is driven by the goal of delivering measurable business impact.
+                        </p>
+                    </div>
+                    <div class="hidden md:flex items-center justify-center">
+                        <div class="text-8xl opacity-10">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title scroll-animate">Skills & Expertise</h2>
+            <p class="section-subtitle scroll-animate">
+                Technologies and tools I work with
+            </p>
+            <div id="skillsGrid" class="skill-grid">
+                <!-- Dynamic skills inserted here -->
+                <div class="skill-category scroll-animate" style="animation-delay: 0s">
+                    <div class="skill-category-title">
+                        <i class="fas fa-cogs"></i>
+                        Automation
+                    </div>
+                    <div class="space-y-2">
+                        <div class="skill-item">n8n</div>
+                        <div class="skill-item">Zapier</div>
+                        <div class="skill-item">Make (Integromat)</div>
+                        <div class="skill-item">Workflow Design</div>
+                    </div>
+                </div>
+
+                <!-- Programming -->
+                <div class="skill-category scroll-animate" style="animation-delay: 0.1s">
+                    <div class="skill-category-title">
+                        <i class="fas fa-code"></i>
+                        Programming
+                    </div>
+                    <div class="space-y-2">
+                        <div class="skill-item">JavaScript (ES6+)</div>
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">C++</div>
+                        <div class="skill-item">Node.js</div>
+                    </div>
+                </div>
+
+                <!-- Integration -->
+                <div class="skill-category scroll-animate" style="animation-delay: 0.2s">
+                    <div class="skill-category-title">
+                        <i class="fas fa-link"></i>
+                        Integration
+                    </div>
+                    <div class="space-y-2">
+                        <div class="skill-item">REST APIs</div>
+                        <div class="skill-item">Webhooks</div>
+                        <div class="skill-item">JSON</div>
+                        <div class="skill-item">OAuth 2.0</div>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="skill-category scroll-animate" style="animation-delay: 0.3s">
+                    <div class="skill-category-title">
+                        <i class="fas fa-database"></i>
+                        Database
+                    </div>
+                    <div class="space-y-2">
+                        <div class="skill-item">MySQL</div>
+                        <div class="skill-item">MongoDB</div>
+                        <div class="skill-item">Firebase</div>
+                        <div class="skill-item">PostgreSQL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-slate-900 bg-opacity-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title scroll-animate">Featured Projects</h2>
+            <p class="section-subtitle scroll-animate">
+                Real-world automation solutions I've built
+            </p>
+            
+            <div id="projectsGrid" class="grid md:grid-cols-2 gap-6">
+                <!-- Dynamic projects inserted here -->
+                <div class="project-card scroll-animate" style="animation-delay: 0s">
+                    <div class="project-header">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fas fa-robot"></i>
+                            AI Lead Qualification & Auto Booking
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-300 mb-4">
+                            An intelligent n8n workflow that automatically qualifies leads using AI, segments them by qualification score, and seamlessly books meetings through Calendly integration.
+                        </p>
+                        <div class="mb-4">
+                            <span class="tech-badge">n8n</span>
+                            <span class="tech-badge">AI/ML</span>
+                            <span class="tech-badge">Calendly API</span>
+                            <span class="tech-badge">Webhook</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card scroll-animate" style="animation-delay: 0.1s">
+                    <div class="project-header">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fas fa-exchange-alt"></i>
+                            Multi-Platform Data Automation
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-300 mb-4">
+                            A comprehensive workflow that syncs data across multiple platforms (CRM, Email, Spreadsheets) in real-time, eliminating manual data entry and ensuring data consistency.
+                        </p>
+                        <div class="mb-4">
+                            <span class="tech-badge">n8n</span>
+                            <span class="tech-badge">REST APIs</span>
+                            <span class="tech-badge">Database</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card scroll-animate" style="animation-delay: 0.2s">
+                    <div class="project-header">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fas fa-bell"></i>
+                            API Monitoring & Alert System
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-300 mb-4">
+                            A real-time monitoring solution that tracks API health, response times, and error rates. Sends instant alerts via Slack and email when issues are detected.
+                        </p>
+                        <div class="mb-4">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">REST API</span>
+                            <span class="tech-badge">MongoDB</span>
+                            <span class="tech-badge">Slack API</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card scroll-animate" style="animation-delay: 0.3s">
+                    <div class="project-header">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fas fa-chart-line"></i>
+                            HAR Optimization using Custom SVM
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-300 mb-4">
+                            An advanced machine learning model using Support Vector Machines to optimize HTTP Archive (HAR) files for web performance, reducing load times and bandwidth usage.
+                        </p>
+                        <div class="mb-4">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Machine Learning</span>
+                            <span class="tech-badge">SVM</span>
+                            <span class="tech-badge">Data Analysis</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title scroll-animate">Let's Connect</h2>
+            <p class="section-subtitle scroll-animate">
+                I'm always open to discussing automation projects, technical insights, or opportunities
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Contact Info -->
+                <div class="scroll-animate">
+                    <div id="contactCards" class="space-y-6">
+                        <!-- Dynamic contact cards inserted here -->
+                        <div class="card p-6 flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-blue-500 bg-opacity-20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-blue-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white mb-1">Email</h3>
+                                <a href="mailto:khandokarsabbirahmed12@gmail.com" class="text-slate-400 hover:text-blue-400 break-all">
+                                    khandokarsabbirahmed12@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- LinkedIn -->
+                        <div class="card p-6 flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-blue-500 bg-opacity-20 flex items-center justify-center flex-shrink-0">
+                                <i class="fab fa-linkedin text-blue-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white mb-1">LinkedIn</h3>
+                                <a href="https://www.linkedin.com/in/sabbir-ahmed-9537231ba/" target="_blank" class="text-slate-400 hover:text-blue-400">
+                                    linkedin.com/in/sabbir-ahmed
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- GitHub -->
+                        <div class="card p-6 flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-blue-500 bg-opacity-20 flex items-center justify-center flex-shrink-0">
+                                <i class="fab fa-github text-blue-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white mb-1">GitHub</h3>
+                                <a href="https://github.com/Sabbir12341" target="_blank" class="text-slate-400 hover:text-blue-400">
+                                    github.com/Sabbir12341
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="scroll-animate">
+                    <form id="contactForm" class="space-y-4" onsubmit="handleFormSubmit(event)">
+                        <input 
+                            type="text" 
+                            name="name"
+                            placeholder="Your Name" 
+                            class="form-input"
+                            required
+                        >
+                        <input 
+                            type="email" 
+                            name="email"
+                            placeholder="Your Email" 
+                            class="form-input"
+                            required
+                        >
+                        <input 
+                            type="text" 
+                            name="subject"
+                            placeholder="Subject" 
+                            class="form-input"
+                            required
+                        >
+                        <textarea 
+                            name="message"
+                            placeholder="Your Message" 
+                            rows="5" 
+                            class="form-input"
+                            required
+                        ></textarea>
+                        <button type="submit" class="btn-primary w-full justify-center">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div id="formMessage" class="mt-4 p-4 rounded-lg hidden"></div>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="mt-12 scroll-animate">
+                <p class="text-slate-400 text-center mb-6">Connect with me on social media</p>
+                <div id="socialLinks" class="flex justify-center gap-4">
+                    <!-- Dynamic social links inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-700 bg-slate-900 bg-opacity-50 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-slate-400 mb-2">
+                © <span id="footerYear">2026</span> Sabbir Ahmed. All rights reserved.
+            </p>
+            <p class="text-slate-500 text-sm">
+                Designed & built with <i class="fas fa-heart text-red-500"></i> | AI Automation Engineer
+            </p>
+        </div>
+    </footer>
+
+    <!-- Admin Panel -->
+    <section id="adminPanel" class="section bg-slate-900 bg-opacity-90 hidden">
+        <div class="max-w-5xl mx-auto">
+            <div class="card p-8">
+                <div class="flex flex-col md:flex-row justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="section-title">Admin Panel</h2>
+                        <p class="section-subtitle">Edit your website content locally in the browser.</p>
+                    </div>
+                    <button class="btn-secondary self-start" onclick="closeAdminPanel()">Close Admin</button>
+                </div>
+
+                <div id="adminLoginView">
+                    <form class="space-y-4" onsubmit="handleAdminLogin(event)">
+                        <input id="adminUsername" type="text" placeholder="Username" class="form-input" required>
+                        <input id="adminPassword" type="password" placeholder="Password" class="form-input" required>
+                        <button type="submit" class="btn-primary w-full justify-center">Login</button>
+                        <div id="adminMessage" class="mt-3 text-sm text-amber-300 hidden"></div>
+                    </form>
+                </div>
+
+                <div id="adminDashboardView" class="hidden">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-3">Hero Content</h3>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Profile Image</label>
+                                <div class="flex gap-4 items-center">
+                                    <div class="flex-1">
+                                        <input id="adminHeroProfileImageFile" type="file" accept="image/*" class="form-input file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" onchange="previewFileImage()">
+                                        <p class="text-xs text-gray-400 mt-1">Select an image file from your computer (JPG, PNG, GIF, WebP - max 5MB)</p>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <img id="profileImagePreview" src="https://via.placeholder.com/64x64/3b82f6/ffffff?text=SA" alt="Preview" class="w-16 h-16 rounded-full border-2 border-blue-500 object-cover">
+                                    </div>
+                                </div>
+                                <div id="uploadStatus" class="mt-2 text-sm text-blue-300 hidden">Uploading...</div>
+                            </div>
+                            <input id="adminHeroTitle" class="form-input mb-3" placeholder="Hero title">
+                            <input id="adminHeroSubtitle" class="form-input mb-3" placeholder="Hero subtitle">
+                            <textarea id="adminHeroTagline" rows="3" class="form-input" placeholder="Hero tagline"></textarea>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-3">About Section</h3>
+                            <textarea id="adminAboutParagraph1" rows="3" class="form-input mb-3" placeholder="About paragraph 1"></textarea>
+                            <textarea id="adminAboutParagraph2" rows="3" class="form-input mb-3" placeholder="About paragraph 2"></textarea>
+                            <textarea id="adminAboutParagraph3" rows="3" class="form-input" placeholder="About paragraph 3"></textarea>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-3">Skills Section</h3>
+                            <div id="adminSkillsContainer" class="space-y-4">
+                                <!-- Skills will be populated here -->
+                            </div>
+                            <button type="button" class="btn-secondary mt-3" onclick="addSkillCategory()">Add Skill Category</button>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-3">Projects Section</h3>
+                            <div id="adminProjectsContainer" class="space-y-4">
+                                <!-- Projects will be populated here -->
+                            </div>
+                            <button type="button" class="btn-secondary mt-3" onclick="addProject()">Add Project</button>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-3">Contact Details</h3>
+                            <input id="adminContactEmail" type="email" class="form-input mb-3" placeholder="Contact email">
+                            <input id="adminContactLinkedIn" type="url" class="form-input mb-3" placeholder="LinkedIn URL">
+                            <input id="adminContactGitHub" type="url" class="form-input" placeholder="GitHub URL">
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-3">Admin Settings</h3>
+                            <div class="bg-gray-700 p-4 rounded border">
+                                <h4 class="text-white font-medium mb-3">Change Admin Credentials</h4>
+                                <input id="currentAdminUsername" type="text" class="form-input mb-3" placeholder="Current username">
+                                <input id="currentAdminPassword" type="password" class="form-input mb-3" placeholder="Current password">
+                                <input id="newAdminUsername" type="text" class="form-input mb-3" placeholder="New username">
+                                <input id="newAdminPassword" type="password" class="form-input mb-3" placeholder="New password">
+                                <button type="button" class="btn-secondary" onclick="changeAdminCredentials()">Update Credentials</button>
+                                <div id="credentialsMessage" class="mt-3 text-sm text-teal-300 hidden"></div>
+                            </div>
+                        </div>
+
+                        <!-- Save Changes Button -->
+                        <div class="flex justify-center mt-8">
+                            <button type="button" class="btn-primary px-8 py-3 text-lg" onclick="saveAdminData()">
+                                <i class="fas fa-save mr-2"></i>Save Changes
+                            </button>
+                            <div id="adminSaveMessage" class="ml-4 text-sm text-green-300 hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Smooth Scroll
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-animate elements
+        document.querySelectorAll('.scroll-animate').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Form Submission
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formMessage = document.getElementById('formMessage');
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            // Disable submit button to prevent double submission
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            try {
+                // Get form data
+                const formData = new FormData(form);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    subject: formData.get('subject'),
+                    message: formData.get('message')
+                };
+
+                // Send to backend API
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    // Show success message
+                    formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+                    formMessage.style.background = 'rgba(34, 197, 94, 0.1)';
+                    formMessage.style.borderLeft = '4px solid #22c55e';
+                    formMessage.style.color = '#86efac';
+                    formMessage.classList.remove('hidden');
+
+                    // Reset form
+                    form.reset();
+                } else {
+                    throw new Error(result.message || 'Failed to send message');
+                }
+
+            } catch (error) {
+                console.error('Form submission error:', error);
+                // Show error message
+                formMessage.textContent = '✗ Failed to send message. Please try again.';
+                formMessage.style.background = 'rgba(239, 68, 68, 0.1)';
+                formMessage.style.borderLeft = '4px solid #ef4444';
+                formMessage.style.color = '#fca5a5';
+                formMessage.classList.remove('hidden');
+            } finally {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+            }
+        }
+
+        const STORAGE_KEY = 'personalWebsiteSiteData';
+        let siteData = {};
+        let adminAuthenticated = false;
+
+        // Load content from API
+        async function loadSiteData() {
+            try {
+                const response = await fetch('/api/content');
+                if (response.ok) {
+                    siteData = await response.json();
+                } else {
+                    console.warn('Failed to load content from API, using defaults');
+                    siteData = getDefaultSiteData();
+                }
+            } catch (error) {
+                console.warn('Error loading content from API:', error);
+                siteData = getDefaultSiteData();
+            }
+            return siteData;
+        }
+
+        function getDefaultSiteData() {
+            return {
+                hero: {
+                    title: 'Sabbir Ahmed',
+                    subtitle: 'AI Automation Engineer | n8n | API Integration',
+                    tagline: 'I build intelligent automation systems using n8n, APIs, and AI to streamline business workflows.'
+                },
+                about: {
+                    paragraph1: 'I\'m a Computer Science and Engineering (CSE) student and a passionate automation enthusiast. With a deep interest in workflow automation and AI integration, I specialize in creating intelligent systems that solve real-world business problems.',
+                    paragraph2: 'My expertise lies in building robust automation workflows using n8n, integrating APIs, and leveraging webhooks to connect disparate systems. I\'m proficient in JavaScript and Python, which allows me to create custom solutions tailored to specific automation needs.',
+                    paragraph3: 'I believe in the power of automation to transform businesses by reducing manual work, minimizing errors, and enabling teams to focus on high-value tasks. Every project I undertake is driven by the goal of delivering measurable business impact.'
+                },
+                skills: [
+                    { title: 'Automation', icon: 'fa-cogs', items: ['n8n', 'Zapier', 'Make (Integromat)', 'Workflow Design'] },
+                    { title: 'Programming', icon: 'fa-code', items: ['JavaScript (ES6+)', 'Python', 'C++', 'Node.js'] },
+                    { title: 'Integration', icon: 'fa-link', items: ['REST APIs', 'Webhooks', 'JSON', 'OAuth 2.0'] },
+                    { title: 'Database', icon: 'fa-database', items: ['MySQL', 'MongoDB', 'Firebase', 'PostgreSQL'] }
+                ],
+                projects: [
+                    {
+                        icon: 'fa-robot',
+                        title: 'AI Lead Qualification & Auto Booking',
+                        description: 'An intelligent n8n workflow that automatically qualifies leads using AI, segments them by qualification score, and seamlessly books meetings through Calendly integration.',
+                        badges: ['n8n', 'AI/ML', 'Calendly API', 'Webhook'],
+                        github: 'https://github.com/Sabbir12341',
+                        demo: 'https://github.com/Sabbir12341'
+                    },
+                    {
+                        icon: 'fa-exchange-alt',
+                        title: 'Multi-Platform Data Automation',
+                        description: 'A comprehensive workflow that syncs data across multiple platforms (CRM, Email, Spreadsheets) in real-time, eliminating manual data entry and ensuring data consistency.',
+                        badges: ['n8n', 'REST APIs', 'Database', 'JavaScript'],
+                        github: 'https://github.com/Sabbir12341',
+                        demo: 'https://github.com/Sabbir12341'
+                    },
+                    {
+                        icon: 'fa-bell',
+                        title: 'API Monitoring & Alert System',
+                        description: 'A real-time monitoring solution that tracks API health, response times, and error rates. Sends instant alerts via Slack and email when issues are detected.',
+                        badges: ['Node.js', 'REST API', 'MongoDB', 'Slack API'],
+                        github: 'https://github.com/Sabbir12341',
+                        demo: 'https://github.com/Sabbir12341'
+                    },
+                    {
+                        icon: 'fa-chart-line',
+                        title: 'HAR Optimization using Custom SVM',
+                        description: 'An advanced machine learning model using Support Vector Machines to optimize HTTP Archive (HAR) files for web performance, reducing load times and bandwidth usage.',
+                        badges: ['Python', 'Machine Learning', 'SVM', 'Data Analysis'],
+                        github: 'https://github.com/Sabbir12341',
+                        demo: 'https://github.com/Sabbir12341'
+                    }
+                ],
+                contact: {
+                    email: 'khandokarsabbirahmed12@gmail.com',
+                    linkedin: 'https://www.linkedin.com/in/sabbir-ahmed-9537231ba/',
+                    github: 'https://github.com/Sabbir12341'
+                }
+            };
+        }
+
+        // Save content to API
+        async function saveSiteData() {
+            try {
+                // Save each section EXCEPT admin
+                const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
+                let allSuccess = true;
+
+                for (const section of sections) {
+                    try {
+                        const response = await fetch('/api/content', {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ section, data: siteData[section] })
+                        });
+
+                        console.log(`Saving ${section}:`, response.status, response.statusText);
+
+                        if (!response.ok) {
+                            allSuccess = false;
+                            const errorData = await response.json();
+                            console.error(`Failed to save ${section}:`, errorData);
+                        } else {
+                            const result = await response.json();
+                            console.log(`Successfully saved ${section}:`, result);
+                        }
+                    } catch (error) {
+                        allSuccess = false;
+                        console.error(`Error saving ${section}:`, error);
+                    }
+                }
+
+                console.log('Save all sections result:', allSuccess);
+                return allSuccess;
+            } catch (error) {
+                console.error('Error in saveSiteData:', error);
+                return false;
+            }
+        }
+
+        function renderHero() {
+            document.getElementById('heroTitle').textContent = siteData.hero.title;
+            document.getElementById('heroSubtitle').textContent = siteData.hero.subtitle;
+            document.getElementById('heroTagline').textContent = siteData.hero.tagline;
+            const profileImg = document.getElementById('profileImage');
+            profileImg.src = siteData.hero.profileImage || 'https://via.placeholder.com/128x128/3b82f6/ffffff?text=SA';
+            profileImg.onerror = function() {
+                this.src = 'https://via.placeholder.com/128x128/3b82f6/ffffff?text=SA';
+            };
+        }
+
+        function renderAbout() {
+            document.getElementById('aboutParagraph1').textContent = siteData.about.paragraph1;
+            document.getElementById('aboutParagraph2').textContent = siteData.about.paragraph2;
+            document.getElementById('aboutParagraph3').textContent = siteData.about.paragraph3;
+        }
+
+        function renderSkills() {
+            const container = document.getElementById('skillsGrid');
+            container.innerHTML = '';
+            if (!siteData.skills || !Array.isArray(siteData.skills)) {
+                siteData.skills = getDefaultSiteData().skills;
+            }
+            siteData.skills.forEach((skill, index) => {
+                const html = `
+                    <div class="skill-category scroll-animate" style="animation-delay: ${index * 0.1}s">
+                        <div class="skill-category-title">
+                            <i class="fas ${skill.icon}"></i>
+                            ${skill.title}
+                        </div>
+                        <div class="space-y-2">
+                            ${skill.items.map(item => `<div class="skill-item">${item}</div>`).join('')}
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        function renderProjects() {
+            const container = document.getElementById('projectsGrid');
+            container.innerHTML = '';
+            if (!siteData.projects || !Array.isArray(siteData.projects)) {
+                siteData.projects = getDefaultSiteData().projects;
+            }
+            siteData.projects.forEach((project, index) => {
+                const html = `
+                    <div class="project-card scroll-animate" style="animation-delay: ${index * 0.1}s">
+                        <div class="project-header">
+                            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                                <i class="fas ${project.icon}"></i>
+                                ${project.title}
+                            </h3>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-slate-300 mb-4">${project.description}</p>
+                            <div class="mb-4">
+                                ${project.badges.map(b => `<span class="tech-badge">${b}</span>`).join('')}
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="${project.github}" target="_blank" class="btn-small">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                                <a href="${project.demo}" target="_blank" class="btn-small">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>Demo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        function renderContactCards() {
+            const container = document.getElementById('contactCards');
+            const contactCards = [
+                { type: 'Email', icon: 'fa-envelope', href: `mailto:${siteData.contact.email}`, text: siteData.contact.email },
+                { type: 'LinkedIn', icon: 'fab fa-linkedin', href: siteData.contact.linkedin, text: siteData.contact.linkedin.replace(/^https?:\/\//, '').replace(/\/$/, '') },
+                { type: 'GitHub', icon: 'fab fa-github', href: siteData.contact.github, text: siteData.contact.github.replace(/^https?:\/\//, '').replace(/\/$/, '') }
+            ];
+
+            container.innerHTML = contactCards.map(card => `
+                <div class="card p-6 flex items-start gap-4 scroll-animate">
+                    <div class="w-12 h-12 rounded-lg bg-blue-500 bg-opacity-20 flex items-center justify-center flex-shrink-0">
+                        <i class="fas ${card.icon} text-blue-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white mb-1">${card.type}</h3>
+                        <a href="${card.href}" class="text-slate-400 hover:text-blue-400 break-all" target="_blank">${card.text}</a>
+                    </div>
+                </div>
+            `).join('');
+
+            const social = document.getElementById('socialLinks');
+            const socialLinks = [
+                { icon: 'fab fa-linkedin', href: siteData.contact.linkedin },
+                { icon: 'fab fa-github', href: siteData.contact.github },
+                { icon: 'fas fa-envelope', href: `mailto:${siteData.contact.email}` }
+            ];
+
+            social.innerHTML = socialLinks.map(link => `
+                <a href="${link.href}" target="_blank" class="social-link">
+                    <i class="${link.icon}"></i>
+                </a>
+            `).join('');
+        }
+
+        function renderFooter() {
+            document.getElementById('footerYear').textContent = siteData.footerYear;
+        }
+
+        function renderSite() {
+            renderHero();
+            renderAbout();
+            renderSkills();
+            renderProjects();
+            renderContactCards();
+            renderFooter();
+            observeScrollAnimations();
+        }
+
+        function observeScrollAnimations() {
+            document.querySelectorAll('.scroll-animate').forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        function openAdminPanel() {
+            document.getElementById('adminPanel').classList.remove('hidden');
+            if (adminAuthenticated) {
+                showAdminDashboard();
+            } else {
+                showAdminLogin();
+            }
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('adminPanel').classList.add('hidden');
+        }
+
+        function showAdminLogin() {
+            document.getElementById('adminLoginView').classList.remove('hidden');
+            document.getElementById('adminDashboardView').classList.add('hidden');
+            document.getElementById('adminMessage').classList.add('hidden');
+        }
+
+        function showAdminDashboard() {
+            document.getElementById('adminLoginView').classList.add('hidden');
+            document.getElementById('adminDashboardView').classList.remove('hidden');
+            populateAdminForm();
+        }
+
+        async function handleAdminLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            const message = document.getElementById('adminMessage');
+
+            try {
+                // Use dedicated login endpoint
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    adminAuthenticated = true;
+                    // Load site data after successful login
+                    await loadSiteData();
+                    message.classList.add('hidden');
+                    showAdminDashboard();
+                    return;
+                }
+
+                message.textContent = 'Invalid credentials. Please try again.';
+                message.classList.remove('hidden');
+            } catch (error) {
+                console.error('Error during login:', error);
+                message.textContent = 'Login failed. Please try again.';
+                message.classList.remove('hidden');
+            }
+        }
+
+        async function populateAdminForm() {
+            // Reload latest data from API
+            await loadSiteData();
+
+            // Clear file input (don't populate with existing URL)
+            document.getElementById('adminHeroProfileImageFile').value = '';
+            document.getElementById('profileImagePreview').src = siteData.hero.profileImage || 'https://via.placeholder.com/64x64/3b82f6/ffffff?text=SA';
+
+            document.getElementById('adminHeroTitle').value = siteData.hero.title;
+            document.getElementById('adminHeroSubtitle').value = siteData.hero.subtitle;
+            document.getElementById('adminHeroTagline').value = siteData.hero.tagline;
+            document.getElementById('adminAboutParagraph1').value = siteData.about.paragraph1;
+            document.getElementById('adminAboutParagraph2').value = siteData.about.paragraph2;
+            document.getElementById('adminAboutParagraph3').value = siteData.about.paragraph3;
+            document.getElementById('adminContactEmail').value = siteData.contact.email;
+            document.getElementById('adminContactLinkedIn').value = siteData.contact.linkedin;
+            document.getElementById('adminContactGitHub').value = siteData.contact.github;
+
+            populateAdminSkills();
+            populateAdminProjects();
+        }
+
+        function populateAdminSkills() {
+            const container = document.getElementById('adminSkillsContainer');
+            container.innerHTML = '';
+
+            if (!siteData.skills || !Array.isArray(siteData.skills)) {
+                siteData.skills = getDefaultSiteData().skills;
+            }
+
+            siteData.skills.forEach((skill, index) => {
+                const skillDiv = document.createElement('div');
+                skillDiv.className = 'bg-gray-700 p-4 rounded border';
+                skillDiv.innerHTML = `
+                    <div class="flex justify-between items-center mb-3">
+                        <h4 class="text-white font-medium">Skill Category ${index + 1}</h4>
+                        <button type="button" class="text-red-400 hover:text-red-300" onclick="removeSkillCategory(${index})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-input mb-3" placeholder="Category title" value="${skill.title}" onchange="updateSkillTitle(${index}, this.value)">
+                    <input type="text" class="form-input mb-3" placeholder="Icon class (e.g., fa-cogs)" value="${skill.icon}" onchange="updateSkillIcon(${index}, this.value)">
+                    <textarea rows="3" class="form-input" placeholder="Skills (one per line)" onchange="updateSkillItems(${index}, this.value)">${skill.items.join('\n')}</textarea>
+                `;
+                container.appendChild(skillDiv);
+            });
+        }
+
+        function populateAdminProjects() {
+            const container = document.getElementById('adminProjectsContainer');
+            container.innerHTML = '';
+
+            if (!siteData.projects || !Array.isArray(siteData.projects)) {
+                siteData.projects = getDefaultSiteData().projects;
+            }
+
+            siteData.projects.forEach((project, index) => {
+                const projectDiv = document.createElement('div');
+                projectDiv.className = 'bg-gray-700 p-4 rounded border';
+                projectDiv.innerHTML = `
+                    <div class="flex justify-between items-center mb-3">
+                        <h4 class="text-white font-medium">Project ${index + 1}</h4>
+                        <button type="button" class="text-red-400 hover:text-red-300" onclick="removeProject(${index})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-input mb-3" placeholder="Project title" value="${project.title}" onchange="updateProjectField(${index}, 'title', this.value)">
+                    <input type="text" class="form-input mb-3" placeholder="Icon class (e.g., fa-robot)" value="${project.icon}" onchange="updateProjectField(${index}, 'icon', this.value)">
+                    <textarea rows="3" class="form-input mb-3" placeholder="Description" onchange="updateProjectField(${index}, 'description', this.value)">${project.description}</textarea>
+                    <input type="url" class="form-input mb-3" placeholder="GitHub URL" value="${project.github}" onchange="updateProjectField(${index}, 'github', this.value)">
+                    <input type="url" class="form-input mb-3" placeholder="Demo URL" value="${project.demo}" onchange="updateProjectField(${index}, 'demo', this.value)">
+                    <textarea rows="2" class="form-input" placeholder="Badges (comma-separated)" onchange="updateProjectBadges(${index}, this.value)">${project.badges.join(', ')}</textarea>
+                `;
+                container.appendChild(projectDiv);
+            });
+        }
+
+        function addSkillCategory() {
+            siteData.skills.push({
+                title: 'New Category',
+                icon: 'fa-star',
+                items: ['Skill 1', 'Skill 2']
+            });
+            populateAdminSkills();
+        }
+
+        function removeSkillCategory(index) {
+            if (confirm('Are you sure you want to remove this skill category?')) {
+                siteData.skills.splice(index, 1);
+                populateAdminSkills();
+            }
+        }
+
+        function updateSkillTitle(index, value) {
+            siteData.skills[index].title = value;
+        }
+
+        function updateSkillIcon(index, value) {
+            siteData.skills[index].icon = value;
+        }
+
+        function updateSkillItems(index, value) {
+            siteData.skills[index].items = value.split('\n').map(item => item.trim()).filter(item => item);
+        }
+
+        function addProject() {
+            siteData.projects.push({
+                icon: 'fa-star',
+                title: 'New Project',
+                description: 'Project description',
+                badges: ['Technology'],
+                github: 'https://github.com/example',
+                demo: 'https://example.com'
+            });
+            populateAdminProjects();
+        }
+
+        function removeProject(index) {
+            if (confirm('Are you sure you want to remove this project?')) {
+                siteData.projects.splice(index, 1);
+                populateAdminProjects();
+            }
+        }
+
+        function updateProjectField(index, field, value) {
+            siteData.projects[index][field] = value;
+        }
+
+        function updateProjectBadges(index, value) {
+            siteData.projects[index].badges = value.split(',').map(badge => badge.trim()).filter(badge => badge);
+        }
+
+        async function saveAdminData() {
+            const fileInput = document.getElementById('adminHeroProfileImageFile');
+            const uploadStatus = document.getElementById('uploadStatus');
+            const saveMessage = document.getElementById('adminSaveMessage');
+
+            try {
+                // Handle file upload first if a file is selected
+                if (fileInput.files && fileInput.files[0]) {
+                    uploadStatus.textContent = 'Uploading image...';
+                    uploadStatus.classList.remove('hidden');
+
+                    try {
+                        const formData = new FormData();
+                        formData.append('profileImage', fileInput.files[0]);
+
+                        const uploadResponse = await fetch('/api/upload/profile-image', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        console.log('Upload response status:', uploadResponse.status);
+
+                        if (!uploadResponse.ok) {
+                            const errorData = await uploadResponse.json();
+                            throw new Error(errorData.error || 'Upload failed');
+                        }
+
+                        const uploadResult = await uploadResponse.json();
+                        console.log('Upload result:', uploadResult);
+
+                        siteData.hero.profileImage = uploadResult.imageUrl;
+
+                        uploadStatus.textContent = 'Image uploaded successfully!';
+                        uploadStatus.classList.remove('text-blue-300', 'hidden');
+                        uploadStatus.classList.add('text-green-300');
+
+                    } catch (error) {
+                        console.error('Upload error:', error);
+                        uploadStatus.textContent = 'Failed to upload image: ' + error.message;
+                        uploadStatus.classList.remove('text-blue-300', 'hidden');
+                        uploadStatus.classList.add('text-red-300');
+                        saveMessage.textContent = '❌ Image upload failed. Changes were not saved.';
+                        saveMessage.classList.remove('hidden');
+                        saveMessage.style.color = '#fca5a5';
+                        return;
+                    }
+                }
+
+                // Update hero data
+                siteData.hero.title = document.getElementById('adminHeroTitle').value;
+                siteData.hero.subtitle = document.getElementById('adminHeroSubtitle').value;
+                siteData.hero.tagline = document.getElementById('adminHeroTagline').value;
+
+                // Update about data
+                siteData.about.paragraph1 = document.getElementById('adminAboutParagraph1').value;
+                siteData.about.paragraph2 = document.getElementById('adminAboutParagraph2').value;
+                siteData.about.paragraph3 = document.getElementById('adminAboutParagraph3').value;
+
+                // Update contact data
+                siteData.contact.email = document.getElementById('adminContactEmail').value;
+                siteData.contact.linkedin = document.getElementById('adminContactLinkedIn').value;
+                siteData.contact.github = document.getElementById('adminContactGitHub').value;
+
+                console.log('Saving site data:', siteData);
+
+                // Save to API
+                const success = await saveSiteData();
+                
+                console.log('Save result:', success);
+
+                if (success) {
+                    // Reload data from API to ensure consistency
+                    await loadSiteData();
+                    renderSite();
+
+                    // Clear file input and reset status
+                    fileInput.value = '';
+                    uploadStatus.classList.add('hidden');
+                    uploadStatus.classList.remove('text-green-300', 'text-red-300');
+                    uploadStatus.classList.add('text-blue-300');
+
+                    saveMessage.textContent = '✅ Changes saved successfully!';
+                    saveMessage.classList.remove('hidden');
+                    saveMessage.style.color = '#86efac';
+                    
+                    setTimeout(() => {
+                        saveMessage.classList.add('hidden');
+                    }, 3000);
+                } else {
+                    throw new Error('Failed to save changes to server');
+                }
+            } catch (error) {
+                console.error('Save error:', error);
+                saveMessage.textContent = '❌ Error: ' + error.message;
+                saveMessage.classList.remove('hidden');
+                saveMessage.style.color = '#fca5a5';
+            }
+        }
+
+        function previewFileImage() {
+            const fileInput = document.getElementById('adminHeroProfileImageFile');
+            const preview = document.getElementById('profileImagePreview');
+
+            if (fileInput.files && fileInput.files[0]) {
+                const file = fileInput.files[0];
+
+                // Validate file size (5MB max)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size must be less than 5MB');
+                    fileInput.value = '';
+                    preview.src = 'https://via.placeholder.com/64x64/3b82f6/ffffff?text=SA';
+                    return;
+                }
+
+                // Validate file type
+                if (!file.type.startsWith('image/')) {
+                    alert('Please select a valid image file');
+                    fileInput.value = '';
+                    preview.src = 'https://via.placeholder.com/64x64/3b82f6/ffffff?text=SA';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = 'https://via.placeholder.com/64x64/3b82f6/ffffff?text=SA';
+            }
+        }
+
+        async function changeAdminCredentials() {
+            const currentUsername = document.getElementById('currentAdminUsername').value;
+            const currentPassword = document.getElementById('currentAdminPassword').value;
+            const newUsername = document.getElementById('newAdminUsername').value;
+            const newPassword = document.getElementById('newAdminPassword').value;
+            const message = document.getElementById('credentialsMessage');
+
+            if (!currentUsername || !currentPassword || !newUsername || !newPassword) {
+                message.textContent = 'All fields are required.';
+                message.className = 'mt-3 text-sm text-red-300';
+                message.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/admin/credentials', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        currentUsername,
+                        currentPassword,
+                        newUsername,
+                        newPassword
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    message.textContent = 'Admin credentials updated successfully! You will need to login again with the new credentials.';
+                    message.className = 'mt-3 text-sm text-teal-300';
+                    message.classList.remove('hidden');
+
+                    // Clear form
+                    document.getElementById('currentAdminUsername').value = '';
+                    document.getElementById('currentAdminPassword').value = '';
+                    document.getElementById('newAdminUsername').value = '';
+                    document.getElementById('newAdminPassword').value = '';
+
+                    // Logout after 3 seconds
+                    setTimeout(() => {
+                        logoutAdmin();
+                    }, 3000);
+                } else {
+                    message.textContent = result.error || 'Failed to update credentials.';
+                    message.className = 'mt-3 text-sm text-red-300';
+                    message.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error updating credentials:', error);
+                message.textContent = 'Failed to update credentials. Please try again.';
+                message.className = 'mt-3 text-sm text-red-300';
+                message.classList.remove('hidden');
+            }
+        }
+
+        document.querySelectorAll('.scroll-animate').forEach((element, index) => {
+            if (!element.style.animationDelay) {
+                element.style.animationDelay = `${index * 0.1}s`;
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const navbar = document.querySelector('.navbar');
+
+            if (scrollPosition > 10) {
+                navbar.style.borderBottom = '1px solid rgba(59, 130, 246, 0.2)';
+            } else {
+                navbar.style.borderBottom = '1px solid rgba(148, 163, 184, 0.1)';
+            }
+        });
+
+        window.addEventListener('load', async () => {
+            await loadSiteData();
+            renderSite();
+            document.querySelectorAll('.fade-in-up').forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    element.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                    element.style.animationDelay = `${index * 0.2}s`;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
