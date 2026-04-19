@@ -1,0 +1,13 @@
+{
+  "name": "personal-website-frontend",
+  "version": "1.0.0",
+  "description": "Personal website frontend",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'Frontend is served by backend'",
+    "build": "echo 'No build needed for static frontend'"
+  },
+  "keywords": ["portfolio", "personal-website"],
+  "author": "",
+  "license": "ISC"
+}

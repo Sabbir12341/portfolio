@@ -1,26 +1,17 @@
 {
   "name": "personal-website",
   "version": "1.0.0",
-  "description": "Personal website for Sabbir Ahmed",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
-  "dependencies": {
-    "express": "^4.18.2",
-    "form-data": "^4.0.5",
-    "formidable": "^3.0.0",
-    "multer": "^2.1.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  },
-  "keywords": [
-    "personal",
-    "website",
-    "portfolio"
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
   ],
-  "author": "Sabbir Ahmed",
-  "license": "MIT"
+  "scripts": {
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev",
+    "start:backend": "cd backend && npm start",
+    "dev:backend": "cd backend && npm run dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build"
+  }
 }
