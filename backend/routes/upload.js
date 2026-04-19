@@ -39,7 +39,8 @@ router.post('/profile-image', async (req, res) => {
             }
 
             const imageUrl = `/api/uploads/${path.basename(file.filepath)}`;
-            res.json({ imageUrl, success: true });
+            const fullImageUrl = `${req.protocol}://${req.get('host')}${imageUrl}`;
+            res.json({ imageUrl: fullImageUrl, success: true });
         });
 
     } catch (err) {
