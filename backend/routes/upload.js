@@ -38,9 +38,12 @@ router.post('/profile-image', async (req, res) => {
                 return res.status(400).json({ error: 'File must be an image' });
             }
 
-            const imageUrl = `/api/uploads/${path.basename(file.filepath)}`;
-            const fullImageUrl = `${req.protocol}://${req.get('host')}${imageUrl}`;
-            res.json({ imageUrl: fullImageUrl, success: true });
+            const fileBuffer = await fs.readFile(file.filepath);
+            const mimeType = file.mimetype || 'image/jpeg';
+            const imageUrl = `data:${mimeType};base64,${fileBuffer.toString('base64')}`;
+
+            await fs.unlink(file.filepath).catch(() => {});
+            res.json({ imageUrl, success: true });
         });
 
     } catch (err) {
