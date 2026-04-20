@@ -390,10 +390,21 @@
                     formData.append('profileImage', fileInput.files[0]);
                     const uploadResponse = await fetch('https://portfolio-35ll.onrender.com/api/upload/profile-image', { method: 'POST', body: formData });
                     if (!uploadResponse.ok) {
-                        const errorData = await uploadResponse.json();
-                        throw new Error(errorData.error || 'Upload failed');
+                        const errorText = await uploadResponse.text();
+                        try {
+                            const errorData = JSON.parse(errorText);
+                            throw new Error(errorData.error || 'Upload failed');
+                        } catch {
+                            throw new Error(`Upload failed: ${errorText}`);
+                        }
                     }
-                    const uploadResult = await uploadResponse.json();
+                    let uploadResult;
+                    try {
+                        uploadResult = await uploadResponse.json();
+                    } catch (parseError) {
+                        const errorText = await uploadResponse.text();
+                        throw new Error(`Upload response was not JSON: ${errorText}`);
+                    }
                     siteData.hero.profileImage = uploadResult.imageUrl;
                     uploadStatus.textContent = 'Image uploaded successfully!';
                     uploadStatus.classList.remove('text-blue-300');
