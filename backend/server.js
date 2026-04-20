@@ -27,8 +27,8 @@ app.use((req, res, next) => {
     next();
 });
 
-// Serve static files from uploads
-app.use('/api/uploads', express.static(path.join(__dirname, 'uploads')));
+// Serve static files from uploads (located at root level)
+app.use('/api/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // ====================== ROUTES ======================
 app.use('/api/admin', adminRoutes);
