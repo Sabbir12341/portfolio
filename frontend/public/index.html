@@ -1021,6 +1021,7 @@
         const STORAGE_KEY = 'personalWebsiteSiteData';
         let siteData = {};
         let adminAuthenticated = false;
+        let uploadedProfileImageDataUrl = null;
 
         // Load content from API
         async function loadSiteData() {
@@ -1489,38 +1490,13 @@ async function saveSiteData() {
                     uploadStatus.classList.remove('hidden');
 
                     try {
-                        const formData = new FormData();
-                        formData.append('profileImage', fileInput.files[0]);
-
-                        const uploadResponse = await fetch('https://portfolio-35ll.onrender.com/api/upload/profile-image', {
-                            method: 'POST',
-                            body: formData
-                        });
-
-                        console.log('Upload response status:', uploadResponse.status);
-
-                        if (!uploadResponse.ok) {
-                            const errorText = await uploadResponse.text();
-                            try {
-                                const errorData = JSON.parse(errorText);
-                                throw new Error(errorData.error || 'Upload failed');
-                            } catch {
-                                throw new Error(`Upload failed: ${errorText}`);
-                            }
+                                if (!uploadedProfileImageDataUrl) {
+                            const readerResult = await readFileAsDataURL(fileInput.files[0]);
+                            uploadedProfileImageDataUrl = readerResult;
                         }
+                        siteData.hero.profileImage = uploadedProfileImageDataUrl;
 
-                        let uploadResult;
-                        try {
-                            uploadResult = await uploadResponse.json();
-                        } catch (parseError) {
-                            const errorText = await uploadResponse.clone().text();
-                            throw new Error(`Upload response was not JSON: ${errorText}`);
-                        }
-                        console.log('Upload result:', uploadResult);
-
-                        siteData.hero.profileImage = uploadResult.imageUrl;
-
-                        uploadStatus.textContent = 'Image uploaded successfully!';
+                        uploadStatus.textContent = 'Image ready to save';
                         uploadStatus.classList.remove('text-blue-300', 'hidden');
                         uploadStatus.classList.add('text-green-300');
 
@@ -1598,6 +1574,7 @@ async function saveSiteData() {
                 if (file.size > 5 * 1024 * 1024) {
                     alert('File size must be less than 5MB');
                     fileInput.value = '';
+                    uploadedProfileImageDataUrl = null;
                     preview.src = 'https://via.placeholder.com/64x64/3b82f6/ffffff?text=SA';
                     return;
                 }
@@ -1606,18 +1583,30 @@ async function saveSiteData() {
                 if (!file.type.startsWith('image/')) {
                     alert('Please select a valid image file');
                     fileInput.value = '';
+                    uploadedProfileImageDataUrl = null;
                     preview.src = 'https://via.placeholder.com/64x64/3b82f6/ffffff?text=SA';
                     return;
                 }
 
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    preview.src = e.target.result;
+                    uploadedProfileImageDataUrl = e.target.result;
+                    preview.src = uploadedProfileImageDataUrl;
                 };
                 reader.readAsDataURL(file);
             } else {
+                uploadedProfileImageDataUrl = null;
                 preview.src = 'https://via.placeholder.com/64x64/3b82f6/ffffff?text=SA';
             }
+        }
+
+        function readFileAsDataURL(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = event => resolve(event.target.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
         }
 
         async function changeAdminCredentials() {
