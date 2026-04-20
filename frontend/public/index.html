@@ -1500,11 +1500,22 @@ async function saveSiteData() {
                         console.log('Upload response status:', uploadResponse.status);
 
                         if (!uploadResponse.ok) {
-                            const errorData = await uploadResponse.json();
-                            throw new Error(errorData.error || 'Upload failed');
+                            const errorText = await uploadResponse.text();
+                            try {
+                                const errorData = JSON.parse(errorText);
+                                throw new Error(errorData.error || 'Upload failed');
+                            } catch {
+                                throw new Error(`Upload failed: ${errorText}`);
+                            }
                         }
 
-                        const uploadResult = await uploadResponse.json();
+                        let uploadResult;
+                        try {
+                            uploadResult = await uploadResponse.json();
+                        } catch (parseError) {
+                            const errorText = await uploadResponse.clone().text();
+                            throw new Error(`Upload response was not JSON: ${errorText}`);
+                        }
                         console.log('Upload result:', uploadResult);
 
                         siteData.hero.profileImage = uploadResult.imageUrl;

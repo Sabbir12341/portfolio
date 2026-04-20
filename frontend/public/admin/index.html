@@ -402,7 +402,7 @@
                     try {
                         uploadResult = await uploadResponse.json();
                     } catch (parseError) {
-                        const errorText = await uploadResponse.text();
+                        const errorText = await uploadResponse.clone().text();
                         throw new Error(`Upload response was not JSON: ${errorText}`);
                     }
                     siteData.hero.profileImage = uploadResult.imageUrl;
