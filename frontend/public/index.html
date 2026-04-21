@@ -1207,6 +1207,17 @@ async function saveSiteData() {
             });
         }
 
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
         function renderProjects() {
             const container = document.getElementById('projectsGrid');
             container.innerHTML = '';
@@ -1218,21 +1229,21 @@ async function saveSiteData() {
                     <div class="project-card scroll-animate" style="animation-delay: ${index * 0.1}s">
                         <div class="project-header">
                             <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                <i class="fas ${project.icon}"></i>
-                                ${project.title}
+                                <i class="fas ${escapeHtml(project.icon)}"></i>
+                                ${escapeHtml(project.title)}
                             </h3>
                         </div>
                         <div class="p-6">
-                            <p class="text-slate-300 mb-4">${project.description}</p>
+                            <p class="text-slate-300 mb-4">${escapeHtml(project.description)}</p>
                             <div class="mb-4">
-                                ${project.badges.map(b => `<span class="tech-badge">${b}</span>`).join('')}
+                                ${project.badges.map(b => `<span class="tech-badge">${escapeHtml(b)}</span>`).join('')}
                             </div>
                             <div class="flex gap-3">
-                                <a href="${project.github}" target="_blank" class="btn-small">
+                                <a href="${escapeHtml(project.github)}" target="_blank" class="btn-small">
                                     <i class="fab fa-github"></i>
                                     <span>GitHub</span>
                                 </a>
-                                <a href="${project.demo}" target="_blank" class="btn-small">
+                                <a href="${escapeHtml(project.demo)}" target="_blank" class="btn-small">
                                     <i class="fas fa-external-link-alt"></i>
                                     <span>Demo</span>
                                 </a>
@@ -1399,9 +1410,9 @@ async function saveSiteData() {
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
-                    <input type="text" class="form-input mb-3" placeholder="Category title" value="${skill.title}" onchange="updateSkillTitle(${index}, this.value)">
-                    <input type="text" class="form-input mb-3" placeholder="Icon class (e.g., fa-cogs)" value="${skill.icon}" onchange="updateSkillIcon(${index}, this.value)">
-                    <textarea rows="3" class="form-input" placeholder="Skills (one per line)" onchange="updateSkillItems(${index}, this.value)">${skill.items.join('\n')}</textarea>
+                    <input type="text" class="form-input mb-3" placeholder="Category title" value="${escapeHtml(skill.title)}" onchange="updateSkillTitle(${index}, this.value)">
+                    <input type="text" class="form-input mb-3" placeholder="Icon class (e.g., fa-cogs)" value="${escapeHtml(skill.icon)}" onchange="updateSkillIcon(${index}, this.value)">
+                    <textarea rows="3" class="form-input" placeholder="Skills (one per line)" onchange="updateSkillItems(${index}, this.value)">${escapeHtml(skill.items.join('\n'))}</textarea>
                 `;
                 container.appendChild(skillDiv);
             });
@@ -1425,12 +1436,12 @@ async function saveSiteData() {
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
-                    <input type="text" class="form-input mb-3" placeholder="Project title" value="${project.title}" onchange="updateProjectField(${index}, 'title', this.value)">
-                    <input type="text" class="form-input mb-3" placeholder="Icon class (e.g., fa-robot)" value="${project.icon}" onchange="updateProjectField(${index}, 'icon', this.value)">
-                    <textarea rows="3" class="form-input mb-3" placeholder="Description" onchange="updateProjectField(${index}, 'description', this.value)">${project.description}</textarea>
-                    <input type="url" class="form-input mb-3" placeholder="GitHub URL" value="${project.github}" onchange="updateProjectField(${index}, 'github', this.value)">
-                    <input type="url" class="form-input mb-3" placeholder="Demo URL" value="${project.demo}" onchange="updateProjectField(${index}, 'demo', this.value)">
-                    <textarea rows="2" class="form-input" placeholder="Badges (comma-separated)" onchange="updateProjectBadges(${index}, this.value)">${project.badges.join(', ')}</textarea>
+                    <input type="text" class="form-input mb-3" placeholder="Project title" value="${escapeHtml(project.title)}" onchange="updateProjectField(${index}, 'title', this.value)">
+                    <input type="text" class="form-input mb-3" placeholder="Icon class (e.g., fa-robot)" value="${escapeHtml(project.icon)}" onchange="updateProjectField(${index}, 'icon', this.value)">
+                    <textarea rows="3" class="form-input mb-3" placeholder="Description" onchange="updateProjectField(${index}, 'description', this.value)">${escapeHtml(project.description)}</textarea>
+                    <input type="url" class="form-input mb-3" placeholder="GitHub URL" value="${escapeHtml(project.github)}" onchange="updateProjectField(${index}, 'github', this.value)">
+                    <input type="url" class="form-input mb-3" placeholder="Demo URL" value="${escapeHtml(project.demo)}" onchange="updateProjectField(${index}, 'demo', this.value)">
+                    <textarea rows="2" class="form-input" placeholder="Badges (comma-separated)" onchange="updateProjectBadges(${index}, this.value)">${escapeHtml(project.badges.join(', '))}</textarea>
                 `;
                 container.appendChild(projectDiv);
             });
