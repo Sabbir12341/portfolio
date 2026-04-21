@@ -1569,13 +1569,18 @@ async function saveSiteData() {
                     uploadStatus.classList.remove('text-green-300', 'text-red-300');
                     uploadStatus.classList.add('text-blue-300');
 
-                    saveMessage.textContent = '✅ Changes saved successfully!';
+                    saveMessage.textContent = '✅ Changes saved successfully! Your projects are now updated on the home page.';
                     saveMessage.classList.remove('hidden');
                     saveMessage.style.color = '#86efac';
                     
+                    console.log('✅ All changes saved. Current siteData projects:', siteData.projects);
+                    
+                    // Automatically close admin panel and scroll to projects after 2 seconds
                     setTimeout(() => {
                         saveMessage.classList.add('hidden');
-                    }, 3000);
+                        closeAdminPanel();
+                        scrollToSection('projects');
+                    }, 2000);
                 } else {
                     throw new Error('Failed to save changes to server');
                 }
