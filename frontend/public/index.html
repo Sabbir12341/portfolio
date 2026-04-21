@@ -1630,14 +1630,24 @@ async function saveSiteData() {
                 img.onload = () => {
                     const canvas = document.createElement('canvas');
                     const ctx = canvas.getContext('2d');
-                    // Resize to max 400px width to reduce size further
-                    const maxWidth = 400;
+                    // Aggressive compression for profile picture: max 300px width, 0.6 quality
+                    const maxWidth = 300;
                     const ratio = maxWidth / img.width;
                     canvas.width = maxWidth;
                     canvas.height = img.height * ratio;
                     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                    resolve(dataUrl);
+                    // Use 0.6 quality to significantly reduce file size
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+                    
+                    // Log size for debugging
+                    console.log('Compressed image size:', Math.round(dataUrl.length / 1024), 'KB');
+                    
+                    // Check if size is still too large
+                    if (dataUrl.length > 2 * 1024 * 1024) {
+                        reject(new Error('Compressed image is still too large (' + Math.round(dataUrl.length / 1024 / 1024) + 'MB). Try a smaller image.'));
+                    } else {
+                        resolve(dataUrl);
+                    }
                 };
                 img.onerror = reject;
                 img.src = URL.createObjectURL(file);
