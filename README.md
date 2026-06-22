@@ -58,15 +58,14 @@ You should see:
 
 ## 🎯 That's It!
 
-- **Website**: http://localhost:3001
-- **Admin Panel**: http://localhost:3001/admin
-- **Default Login**: admin / admin123
-
+- **Website**: sabbirportfolio.vercel.app/
+- **Admin Panel**: sabbirportfolio.vercel.app/admin
+- **Default Login**:
 ---
 
 ### ⚠️ Important: Change Password First!
 
-1. Go to http://localhost:3001/admin
+1. Go to sabbirportfolio.vercel.app/admin
 2. Login with admin/admin123
 3. Scroll to "Admin Settings"
 4. Change username and password
