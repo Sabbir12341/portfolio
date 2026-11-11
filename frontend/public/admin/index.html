@@ -522,7 +522,8 @@
         document.getElementById('adminLoginForm').addEventListener('submit', handleAdminLogin);
         document.getElementById('logoutButton').addEventListener('click', logout);
 
-        window.addEventListener('load', async () => {
+        // Don't wait for every CDN file/font: render as soon as the HTML is parsed
+        document.addEventListener('DOMContentLoaded', async () => {
             if (isAuthenticated()) {
                 await showDashboardView();
             } else {
