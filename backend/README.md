@@ -5,7 +5,8 @@
 Create a `.env` file in the backend folder with:
 
 ```
-MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/personal-website?retryWrites=true&w=majority
+SUPABASE_URL=https://your-project-ref.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 PORT=3001
 NODE_ENV=development
 ```
@@ -24,12 +25,12 @@ cd ../frontend
 npm install
 ```
 
-### 2. MongoDB Setup
+### 2. Supabase Setup
 
-Get your MongoDB connection string from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas):
-- Create a cluster
-- Get your connection string
-- Add `<username>` and `<password>` to your `.env` file
+- Create a project at [supabase.com](https://supabase.com)
+- Run `supabase/schema.sql` in the **SQL Editor**
+- Copy the Project URL and **service_role** key (Project Settings → API) into `.env`
+- Moving from MongoDB? Add `MONGO_URI` to `.env` and run `node scripts/migrate-mongo-to-supabase.js` once
 
 ### 3. Run Locally
 
@@ -62,7 +63,8 @@ Link your GitHub repository to Render
 ### 4. Environment Variables
 Add to Render dashboard:
 ```
-MONGO_URI=<your_mongodb_atlas_connection_string>
+SUPABASE_URL=<your_supabase_project_url>
+SUPABASE_SERVICE_ROLE_KEY=<your_service_role_key>
 NODE_ENV=production
 ```
 
@@ -96,10 +98,12 @@ personal-website/
 │           └── index.html (admin panel)
 ├── backend/
 │   ├── config/
-│   │   └── database.js
-│   ├── models/
-│   │   ├── Message.js
-│   │   └── SiteContent.js
+│   │   └── supabase.js
+│   ├── supabase/
+│   │   └── schema.sql
+│   ├── scripts/
+│   │   ├── sync-content.js
+│   │   └── migrate-mongo-to-supabase.js
 │   ├── routes/
 │   │   ├── admin.js
 │   │   ├── content.js
@@ -121,7 +125,7 @@ personal-website/
 ## Features
 
 ✅ Responsive design with Tailwind CSS
-✅ MongoDB integration
+✅ Supabase (Postgres) integration
 ✅ Admin panel to manage content
 ✅ File upload for profile image
 ✅ Contact form with message storage

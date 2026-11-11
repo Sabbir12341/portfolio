@@ -17,10 +17,12 @@ personal-website/
 │
 ├── backend/
 │   ├── config/
-│   │   └── database.js         (MongoDB connection)
-│   ├── models/
-│   │   ├── Message.js
-│   │   └── SiteContent.js
+│   │   └── supabase.js         (Supabase client + content helpers)
+│   ├── supabase/
+│   │   └── schema.sql          (Tables: site_content, messages)
+│   ├── scripts/
+│   │   ├── sync-content.js     (Push site-content.js to the database)
+│   │   └── migrate-mongo-to-supabase.js (One-time MongoDB → Supabase copy)
 │   ├── routes/
 │   │   ├── admin.js            (Admin endpoints)
 │   │   ├── content.js          (Content endpoints)
@@ -44,15 +46,18 @@ personal-website/
 Create a `.env` file in the `backend` folder:
 
 ```bash
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/personal-website?retryWrites=true&w=majority
+SUPABASE_URL=https://your-project-ref.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 PORT=3001
 NODE_ENV=development
 ```
 
-Get your MongoDB connection string from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas):
-1. Create free cluster
-2. Get connection string
-3. Replace `<username>` and `<password>`
+Set up [Supabase](https://supabase.com):
+1. Create a project
+2. Run `backend/supabase/schema.sql` in **SQL Editor**
+3. Copy the Project URL and **service_role** key from **Project Settings → API**
+
+See [README.md](README.md) for the full steps, including moving old MongoDB data.
 
 ### 2. Run the Server
 
@@ -115,7 +120,8 @@ git push -u origin main
 2. Add these variables:
 
 ```
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/personal-website?retryWrites=true&w=majority
+SUPABASE_URL=https://your-project-ref.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 NODE_ENV=production
 ```
 
@@ -156,10 +162,9 @@ POST /api/upload/profile-image  - Upload profile image
 
 1. **Change Default Password**: Log in immediately and change admin credentials
 2. **Use Environment Variables**: Never hardcode secrets
-3. **MongoDB Security**:
-   - Use strong password
-   - Whitelist IP addresses in MongoDB Atlas
-   - Use read-only keys when possible
+3. **Supabase Security**:
+   - The service_role key bypasses RLS: keep it only on the server (`backend/.env`, Render)
+   - Tables have RLS enabled with no policies, so the public anon key cannot read or write them
 
 ---
 
@@ -171,10 +176,10 @@ npx kill-port 3001
 npm run dev
 ```
 
-### MongoDB Connection Error
-- Check MONGO_URI in `.env`
-- Verify IP address is whitelisted in MongoDB Atlas
-- Ensure cluster is running
+### Supabase Connection Error
+- Check `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in `.env`
+- Make sure `backend/supabase/schema.sql` has been run
+- Free projects pause after a week of inactivity: restore it in the Supabase dashboard
 
 ### Frontend Not Loading
 - Make sure frontend files are in `frontend/public/`
@@ -190,8 +195,7 @@ npm run dev
 ## 📦 What's Included
 
 ✅ **Express.js API** - RESTful backend with routes
-✅ **MongoDB** - Cloud database integration
-✅ **Mongoose** - Database modeling
+✅ **Supabase (Postgres)** - Cloud database integration
 ✅ **CORS** - Cross-origin request handling
 ✅ **File Upload** - Profile image uploads
 ✅ **Static File Serving** - Frontend from backend
@@ -239,17 +243,17 @@ npm install      # Install dependencies
 # View logs
 npm run dev      # See console output
 
-# MongoDB
-# Access MongoDB Atlas dashboard to view data
-# https://cloud.mongodb.com
+# Supabase
+# View data in the Table Editor of the Supabase dashboard
+# https://supabase.com/dashboard
 ```
 
 ---
 
 ## 🎯 Next Steps
 
-1. ✅ Get MongoDB Atlas connection string
-2. ✅ Create `.env` file with MongoDB URI
+1. ✅ Create a Supabase project and run `schema.sql`
+2. ✅ Create `.env` file with the Supabase URL and service_role key
 3. ✅ Test locally: `npm run dev` from `backend/` folder
 4. ✅ Push to GitHub
 5. ✅ Deploy to Render
@@ -260,9 +264,9 @@ npm run dev      # See console output
 
 ## 📞 Support
 
-**Issue: Can't connect to MongoDB?**
-- Verify connection string in `.env`
-- Check IP whitelist in MongoDB Atlas
+**Issue: Can't connect to Supabase?**
+- Verify `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in `.env`
+- Check that the project is not paused
 
 **Issue: Frontend not showing?**
 - Ensure `frontend/public/index.html` exists
@@ -277,7 +281,7 @@ npm run dev      # See console output
 ## 🎓 Learn More
 
 - [Express.js Docs](https://expressjs.com/)
-- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- [Supabase Docs](https://supabase.com/docs)
 - [Render Deployment](https://render.com/docs)
 - [Tailwind CSS](https://tailwindcss.com/)
 

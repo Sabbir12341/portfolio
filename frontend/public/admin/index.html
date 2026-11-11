@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel | Personal Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/site-content.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-slate-950 text-white min-h-screen">
@@ -181,64 +182,8 @@
         }
 
         function getDefaultSiteData() {
-            return {
-                hero: {
-                    title: 'Sabbir Ahmed',
-                    subtitle: 'AI Automation Engineer | n8n | API Integration',
-                    tagline: 'I build intelligent automation systems using n8n, APIs, and AI to streamline business workflows.',
-                    profileImage: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22128%22 height=%22128%22%3E%3Crect fill=%223b82f6%22 width=%22128%22 height=%22128%22/%3E%3Ctext x=%2764%22 y=%2775%22 font-size=%2740%22 fill=%22white%22 text-anchor=%22middle%22 font-weight=%22bold%22%3ESA%3C/text%3E%3C/svg%3E'
-                },
-                about: {
-                    paragraph1: 'I\'m a Computer Science and Engineering (CSE) student and a passionate automation enthusiast. With a deep interest in workflow automation and AI integration, I specialize in creating intelligent systems that solve real-world business problems.',
-                    paragraph2: 'My expertise lies in building robust automation workflows using n8n, integrating APIs, and leveraging webhooks to connect disparate systems. I\'m proficient in JavaScript and Python, which allows me to create custom solutions tailored to specific automation needs.',
-                    paragraph3: 'I believe in the power of automation to transform businesses by reducing manual work, minimizing errors, and enabling teams to focus on high-value tasks. Every project I undertake is driven by the goal of delivering measurable business impact.'
-                },
-                skills: [
-                    { title: 'Automation', icon: 'fa-cogs', items: ['n8n', 'Zapier', 'Make (Integromat)', 'Workflow Design'] },
-                    { title: 'Programming', icon: 'fa-code', items: ['JavaScript (ES6+)', 'Python', 'C++', 'Node.js'] },
-                    { title: 'Integration', icon: 'fa-link', items: ['REST APIs', 'Webhooks', 'JSON', 'OAuth 2.0'] },
-                    { title: 'Database', icon: 'fa-database', items: ['MySQL', 'MongoDB', 'Firebase', 'PostgreSQL'] }
-                ],
-                projects: [
-                    {
-                        icon: 'fa-robot',
-                        title: 'AI Lead Qualification & Auto Booking',
-                        description: 'An intelligent n8n workflow that automatically qualifies leads using AI, segments them by qualification score, and seamlessly books meetings through Calendly integration.',
-                        badges: ['n8n', 'AI/ML', 'Calendly API', 'Webhook'],
-                        github: 'https://github.com/Sabbir12341',
-                        demo: 'https://github.com/Sabbir12341'
-                    },
-                    {
-                        icon: 'fa-exchange-alt',
-                        title: 'Multi-Platform Data Automation',
-                        description: 'A comprehensive workflow that syncs data across multiple platforms (CRM, Email, Spreadsheets) in real-time, eliminating manual data entry and ensuring data consistency.',
-                        badges: ['n8n', 'REST APIs', 'Database', 'JavaScript'],
-                        github: 'https://github.com/Sabbir12341',
-                        demo: 'https://github.com/Sabbir12341'
-                    },
-                    {
-                        icon: 'fa-bell',
-                        title: 'API Monitoring & Alert System',
-                        description: 'A real-time monitoring solution that tracks API health, response times, and error rates. Sends instant alerts via Slack and email when issues are detected.',
-                        badges: ['Node.js', 'REST API', 'MongoDB', 'Slack API'],
-                        github: 'https://github.com/Sabbir12341',
-                        demo: 'https://github.com/Sabbir12341'
-                    },
-                    {
-                        icon: 'fa-chart-line',
-                        title: 'HAR Optimization using Custom SVM',
-                        description: 'An advanced machine learning model using Support Vector Machines to optimize HTTP Archive (HAR) files for web performance, reducing load times and bandwidth usage.',
-                        badges: ['Python', 'Machine Learning', 'SVM', 'Data Analysis'],
-                        github: 'https://github.com/Sabbir12341',
-                        demo: 'https://github.com/Sabbir12341'
-                    }
-                ],
-                contact: {
-                    email: 'khandokarsabbirahmed12@gmail.com',
-                    linkedin: 'https://www.linkedin.com/in/sabbir-ahmed-9537231ba/',
-                    github: 'https://github.com/Sabbir12341'
-                }
-            };
+            // Content lives in /site-content.js (loaded in <head>); return a fresh copy
+            return JSON.parse(JSON.stringify(window.PORTFOLIO_CONTENT));
         }
 
         function populateAdminForm() {

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sabbir Ahmed - AI Automation Engineer</title>
+    <meta name="description" content="Sabbir Ahmed: AI Automation Engineer building production AI workflows with n8n, Claude Code, AI agents and API integrations.">
     <script                       src="https://cdn.tailwindcss.com"></script>
+    <script src="/site-content.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -410,6 +412,7 @@
             </div>
             <div class="hidden md:flex gap-8 items-center">
                 <a href="#about" class="nav-link text-slate-300 hover:text-blue-400">About</a>
+                <a href="#experience" class="nav-link text-slate-300 hover:text-blue-400">Experience</a>
                 <a href="#skills" class="nav-link text-slate-300 hover:text-blue-400">Skills</a>
                 <a href="#projects" class="nav-link text-slate-300 hover:text-blue-400">Projects</a>
                 <a href="#contact" class="nav-link text-slate-300 hover:text-blue-400">Contact</a>
@@ -426,6 +429,7 @@
         <div id="mobileMenu" class="hidden md:hidden border-t border-slate-700 bg-slate-900">
             <div class="px-4 py-3 space-y-3">
                 <a href="#about" class="block text-slate-300 hover:text-blue-400 py-2" onclick="toggleMobileMenu()">About</a>
+                <a href="#experience" class="block text-slate-300 hover:text-blue-400 py-2" onclick="toggleMobileMenu()">Experience</a>
                 <a href="#skills" class="block text-slate-300 hover:text-blue-400 py-2" onclick="toggleMobileMenu()">Skills</a>
                 <a href="#projects" class="block text-slate-300 hover:text-blue-400 py-2" onclick="toggleMobileMenu()">Projects</a>
                 <a href="#contact" class="block text-slate-300 hover:text-blue-400 py-2" onclick="toggleMobileMenu()">Contact</a>
@@ -447,10 +451,10 @@
                     Sabbir Ahmed
                 </h1>
                 <p id="heroSubtitle" class="hero-subtitle">
-                    AI Automation Engineer | n8n | API Integration
+                    AI Automation Engineer | n8n | Claude Code | AI Agents | API Integrations
                 </p>
                 <p id="heroTagline" class="hero-tagline">
-                    I build intelligent automation systems using n8n, APIs, and AI to streamline business workflows.
+                    I build and run production AI workflows for real businesses: n8n pipelines, AI agents and API integrations, built for accuracy, auditability and cost control.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <button onclick="scrollToSection('projects')" class="btn-primary group">
@@ -480,13 +484,13 @@
                 <div class="flex flex-col md:flex-row gap-8">
                     <div class="flex-1" id="aboutText">
                         <p id="aboutParagraph1" class="text-slate-300 text-lg leading-relaxed mb-4">
-                            I'm a Computer Science and Engineering (CSE) student and a passionate automation enthusiast. With a deep interest in workflow automation and AI integration, I specialize in creating intelligent systems that solve real-world business problems.
+                            I'm an AI Automation Engineer at Smartdata Technology Ltd in Dhaka, Bangladesh. I built the automation behind OmniPost, a multi-brand AI customer messaging platform that is live for 3 brands: n8n workflows, AI agents that classify, draft and check replies, and a TypeScript engine built with Claude Code. It is all connected to Meta, Google, Telegram and OpenRouter through APIs and webhooks.
                         </p>
                         <p id="aboutParagraph2" class="text-slate-300 text-lg leading-relaxed mb-4">
-                            My expertise lies in building robust automation workflows using n8n, integrating APIs, and leveraging webhooks to connect disparate systems. I'm proficient in JavaScript and Python, which allows me to create custom solutions tailored to specific automation needs.
+                            I build for accuracy: an audit trail for every change, access control per client, cost tracking for every AI call, and planned-vs-actual reconciliation reports. I hold a B.Sc. in Computer Science &amp; Engineering, and my research on human activity recognition has been accepted at IEEE COMPAS 2026.
                         </p>
                         <p id="aboutParagraph3" class="text-slate-300 text-lg leading-relaxed">
-                            I believe in the power of automation to transform businesses by reducing manual work, minimizing errors, and enabling teams to focus on high-value tasks. Every project I undertake is driven by the goal of delivering measurable business impact.
+                            Next, I want to apply these strengths to automating financial workflows such as data entry, reconciliation and reporting. I'm based in Dhaka, open to remote work during US business hours, and I work in Bangla and English.
                         </p>
                     </div>
                     <div class="hidden md:flex items-center justify-center">
@@ -499,8 +503,54 @@
         </div>
     </section>
 
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title scroll-animate">Experience</h2>
+            <p class="section-subtitle scroll-animate">
+                Production AI automation for real businesses
+            </p>
+            <div class="card p-8 scroll-animate">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">AI Automation Engineer</h3>
+                        <p class="text-blue-400 font-medium">Smartdata Technology Ltd · Dhaka, Bangladesh</p>
+                    </div>
+                    <span class="text-slate-400 text-sm whitespace-nowrap">2025 – Present</span>
+                </div>
+                <p class="text-slate-400 italic mb-1">Product: OmniPost, an AI customer messaging and social media platform, live for 3 brands</p>
+                <p class="text-slate-400 text-sm mb-6">
+                    <a href="https://omnipost-user-dashboard.vercel.app" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300">Live dashboard</a>
+                    ·
+                    <a href="https://omniposts.xyz" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300">Website</a>
+                    · Demo access on request
+                </p>
+                <ul class="space-y-3 text-slate-300 leading-relaxed list-disc pl-5">
+                    <li>Built the end-to-end AI pipeline (intake → classification → drafting → decision routing → publishing) as n8n workflows for Facebook, Messenger, Instagram, LinkedIn and Google reviews. Later moved the Meta part into a TypeScript engine, so a message in manual mode now uses no n8n execution.</li>
+                    <li>Developed the client dashboard with <strong class="text-white">Claude Code</strong> (Next.js, TypeScript, Supabase/PostgreSQL): 40+ versioned SQL migrations, row-level security so each business sees only its own data (with automated tests that prove it), and an <strong class="text-white">audit log</strong> recording who changed what, with before/after values.</li>
+                    <li>Built an LLM reply agent that answers in English and Bangla from each brand's knowledge base (products, FAQs, owner rules) and the conversation history. Confidence-based routing sends unsure or sensitive cases to human approval.</li>
+                    <li>Added a second-pass AI check that holds any reply that guesses or invents facts. In a replay of real customer questions it caught 15 of 15 at about $0.0005 per message.</li>
+                    <li>Reduced AI cost: every AI call's tokens and cost are logged to a usage ledger. Sending only the products a message mentions cut a ~9,400-token prompt. Rule-based quick replies now answer the button taps that made up 72% of one client's messages, with no AI cost.</li>
+                    <li><strong class="text-white">Document-to-data automation:</strong> owners upload Excel, CSV, Word or PDF files, and an LLM extracts structured products, prices and FAQs into the database. Existing records are matched and updated, not duplicated.</li>
+                    <li><strong class="text-white">Reconciliation reporting:</strong> parses monthly content plans, syncs published posts from the Meta API every 6 hours, matches planned vs. actual items and produces green/amber/red weekly compliance scorecards.</li>
+                    <li>Integrated the Meta Graph API with signature-verified (HMAC) webhooks, plus the Google Business Profile API, OpenRouter, Supabase and the Telegram Bot API (real-time reservation alerts to staff). Added an error-logging workflow and diagnosed live production issues from data.</li>
+                </ul>
+                <div class="mt-6">
+                    <span class="tech-badge">n8n</span>
+                    <span class="tech-badge">TypeScript</span>
+                    <span class="tech-badge">Next.js</span>
+                    <span class="tech-badge">Supabase</span>
+                    <span class="tech-badge">Claude Code</span>
+                    <span class="tech-badge">OpenRouter</span>
+                    <span class="tech-badge">Meta Graph API</span>
+                    <span class="tech-badge">Telegram Bot API</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Skills Section -->
-    <section id="skills" class="section">
+    <section id="skills" class="section bg-slate-900 bg-opacity-50">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title scroll-animate">Skills & Expertise</h2>
             <p class="section-subtitle scroll-animate">
@@ -508,66 +558,12 @@
             </p>
             <div id="skillsGrid" class="skill-grid">
                 <!-- Dynamic skills inserted here -->
-                <div class="skill-category scroll-animate" style="animation-delay: 0s">
-                    <div class="skill-category-title">
-                        <i class="fas fa-cogs"></i>
-                        Automation
-                    </div>
-                    <div class="space-y-2">
-                        <div class="skill-item">n8n</div>
-                        <div class="skill-item">Zapier</div>
-                        <div class="skill-item">Make (Integromat)</div>
-                        <div class="skill-item">Workflow Design</div>
-                    </div>
-                </div>
-
-                <!-- Programming -->
-                <div class="skill-category scroll-animate" style="animation-delay: 0.1s">
-                    <div class="skill-category-title">
-                        <i class="fas fa-code"></i>
-                        Programming
-                    </div>
-                    <div class="space-y-2">
-                        <div class="skill-item">JavaScript (ES6+)</div>
-                        <div class="skill-item">Python</div>
-                        <div class="skill-item">C++</div>
-                        <div class="skill-item">Node.js</div>
-                    </div>
-                </div>
-
-                <!-- Integration -->
-                <div class="skill-category scroll-animate" style="animation-delay: 0.2s">
-                    <div class="skill-category-title">
-                        <i class="fas fa-link"></i>
-                        Integration
-                    </div>
-                    <div class="space-y-2">
-                        <div class="skill-item">REST APIs</div>
-                        <div class="skill-item">Webhooks</div>
-                        <div class="skill-item">JSON</div>
-                        <div class="skill-item">OAuth 2.0</div>
-                    </div>
-                </div>
-
-                <!-- Database -->
-                <div class="skill-category scroll-animate" style="animation-delay: 0.3s">
-                    <div class="skill-category-title">
-                        <i class="fas fa-database"></i>
-                        Database
-                    </div>
-                    <div class="space-y-2">
-                        <div class="skill-item">MySQL</div>
-                        <div class="skill-item">MongoDB</div>
-                        <div class="skill-item">Firebase</div>
-                        <div class="skill-item">PostgreSQL</div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section bg-slate-900 bg-opacity-50">
+    <section id="projects" class="section">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title scroll-animate">Featured Projects</h2>
             <p class="section-subtitle scroll-animate">
@@ -576,127 +572,47 @@
             
             <div id="projectsGrid" class="grid md:grid-cols-2 gap-6">
                 <!-- Dynamic projects inserted here -->
-                <div class="project-card scroll-animate" style="animation-delay: 0s">
-                    <div class="project-header">
-                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                            <i class="fas fa-robot"></i>
-                            AI Lead Qualification & Auto Booking
-                        </h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-slate-300 mb-4">
-                            An intelligent n8n workflow that automatically qualifies leads using AI, segments them by qualification score, and seamlessly books meetings through Calendly integration.
-                        </p>
-                        <div class="mb-4">
-                            <span class="tech-badge">n8n</span>
-                            <span class="tech-badge">AI/ML</span>
-                            <span class="tech-badge">Calendly API</span>
-                            <span class="tech-badge">Webhook</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
-                                <i class="fab fa-github"></i>
-                                <span>GitHub</span>
-                            </a>
-                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Demo</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Project 2 -->
-                <div class="project-card scroll-animate" style="animation-delay: 0.1s">
-                    <div class="project-header">
-                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                            <i class="fas fa-exchange-alt"></i>
-                            Multi-Platform Data Automation
-                        </h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-slate-300 mb-4">
-                            A comprehensive workflow that syncs data across multiple platforms (CRM, Email, Spreadsheets) in real-time, eliminating manual data entry and ensuring data consistency.
-                        </p>
-                        <div class="mb-4">
-                            <span class="tech-badge">n8n</span>
-                            <span class="tech-badge">REST APIs</span>
-                            <span class="tech-badge">Database</span>
-                            <span class="tech-badge">JavaScript</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
-                                <i class="fab fa-github"></i>
-                                <span>GitHub</span>
-                            </a>
-                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Demo</span>
-                            </a>
-                        </div>
-                    </div>
+    <!-- Research & Education Section -->
+    <section id="education" class="section bg-slate-900 bg-opacity-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title scroll-animate">Research &amp; Education</h2>
+            <p class="section-subtitle scroll-animate">
+                Publication, degree and achievements
+            </p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card p-6 scroll-animate">
+                    <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <i class="fas fa-file-signature text-blue-400"></i>
+                        Publication
+                    </h3>
+                    <p class="text-slate-300 mb-2">"Efficient Human Activity Recognition Using RFE-Based Feature Selection and a Gaussian-Kernel SVM"</p>
+                    <p class="text-slate-400 text-sm mb-2">IEEE 3rd International Conference on Computing, Applications and Systems (COMPAS 2026), University of Dhaka, Oct. 2026 (accepted)</p>
+                    <p class="text-slate-400 text-sm">95.86% accuracy on smartphone sensor data; predictions explained with SHAP.</p>
                 </div>
-
-                <!-- Project 3 -->
-                <div class="project-card scroll-animate" style="animation-delay: 0.2s">
-                    <div class="project-header">
-                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                            <i class="fas fa-bell"></i>
-                            API Monitoring & Alert System
-                        </h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-slate-300 mb-4">
-                            A real-time monitoring solution that tracks API health, response times, and error rates. Sends instant alerts via Slack and email when issues are detected.
-                        </p>
-                        <div class="mb-4">
-                            <span class="tech-badge">Node.js</span>
-                            <span class="tech-badge">REST API</span>
-                            <span class="tech-badge">MongoDB</span>
-                            <span class="tech-badge">Slack API</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
-                                <i class="fab fa-github"></i>
-                                <span>GitHub</span>
-                            </a>
-                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Demo</span>
-                            </a>
-                        </div>
-                    </div>
+                <div class="card p-6 scroll-animate">
+                    <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <i class="fas fa-graduation-cap text-blue-400"></i>
+                        Education
+                    </h3>
+                    <p class="text-slate-300 mb-2">B.Sc. in Computer Science &amp; Engineering</p>
+                    <p class="text-slate-400 text-sm mb-2">Hajee Mohammad Danesh Science and Technology University</p>
+                    <p class="text-slate-400 text-sm">2020 – 2025 · CGPA 3.05/4.00</p>
                 </div>
-
-                <!-- Project 4 -->
-                <div class="project-card scroll-animate" style="animation-delay: 0.3s">
-                    <div class="project-header">
-                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                            <i class="fas fa-chart-line"></i>
-                            HAR Optimization using Custom SVM
-                        </h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-slate-300 mb-4">
-                            An advanced machine learning model using Support Vector Machines to optimize HTTP Archive (HAR) files for web performance, reducing load times and bandwidth usage.
-                        </p>
-                        <div class="mb-4">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Machine Learning</span>
-                            <span class="tech-badge">SVM</span>
-                            <span class="tech-badge">Data Analysis</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
-                                <i class="fab fa-github"></i>
-                                <span>GitHub</span>
-                            </a>
-                            <a href="https://github.com/Sabbir12341" target="_blank" class="btn-small">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Demo</span>
-                            </a>
-                        </div>
-                    </div>
+                <div class="card p-6 scroll-animate">
+                    <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <i class="fas fa-trophy text-blue-400"></i>
+                        Achievements &amp; Languages
+                    </h3>
+                    <ul class="text-slate-300 text-sm space-y-2 list-disc pl-5">
+                        <li>500+ competitive programming problems solved (Codeforces rating 1083)</li>
+                        <li>AUST IUPC 2022: Rank 61</li>
+                        <li>Meta Hacker Cup participant (2022, 2023)</li>
+                        <li>Bangla (native), English (professional working proficiency)</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -707,7 +623,8 @@
         <div class="max-w-4xl mx-auto">
             <h2 class="section-title scroll-animate">Let's Connect</h2>
             <p class="section-subtitle scroll-animate">
-                I'm always open to discussing automation projects, technical insights, or opportunities
+                I'm always open to discussing automation projects, technical insights, or opportunities.
+                Based in Dhaka, Bangladesh, and open to remote work during US business hours.
             </p>
 
             <div class="grid md:grid-cols-2 gap-8">
@@ -1046,64 +963,8 @@
         }
 
         function getDefaultSiteData() {
-            return {
-                hero: {
-                    title: 'Sabbir Ahmed',
-                    subtitle: 'AI Automation Engineer | n8n | API Integration',
-                    tagline: 'I build intelligent automation systems using n8n, APIs, and AI to streamline business workflows.',
-                    profileImage: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22128%22 height=%22128%22%3E%3Crect fill=%223b82f6%22 width=%22128%22 height=%22128%22/%3E%3Ctext x=%2264%22 y=%2775%22 font-size=%2740%22 fill=%22white%22 text-anchor=%22middle%22 font-weight=%22bold%22%3ESA%3C/text%3E%3C/svg%3E'
-                },
-                about: {
-                    paragraph1: 'I\'m a Computer Science and Engineering (CSE) student and a passionate automation enthusiast. With a deep interest in workflow automation and AI integration, I specialize in creating intelligent systems that solve real-world business problems.',
-                    paragraph2: 'My expertise lies in building robust automation workflows using n8n, integrating APIs, and leveraging webhooks to connect disparate systems. I\'m proficient in JavaScript and Python, which allows me to create custom solutions tailored to specific automation needs.',
-                    paragraph3: 'I believe in the power of automation to transform businesses by reducing manual work, minimizing errors, and enabling teams to focus on high-value tasks. Every project I undertake is driven by the goal of delivering measurable business impact.'
-                },
-                skills: [
-                    { title: 'Automation', icon: 'fa-cogs', items: ['n8n', 'Zapier', 'Make (Integromat)', 'Workflow Design'] },
-                    { title: 'Programming', icon: 'fa-code', items: ['JavaScript (ES6+)', 'Python', 'C++', 'Node.js'] },
-                    { title: 'Integration', icon: 'fa-link', items: ['REST APIs', 'Webhooks', 'JSON', 'OAuth 2.0'] },
-                    { title: 'Database', icon: 'fa-database', items: ['MySQL', 'MongoDB', 'Firebase', 'PostgreSQL'] }
-                ],
-                projects: [
-                    {
-                        icon: 'fa-robot',
-                        title: 'AI Lead Qualification & Auto Booking',
-                        description: 'An intelligent n8n workflow that automatically qualifies leads using AI, segments them by qualification score, and seamlessly books meetings through Calendly integration.',
-                        badges: ['n8n', 'AI/ML', 'Calendly API', 'Webhook'],
-                        github: 'https://github.com/Sabbir12341',
-                        demo: 'https://github.com/Sabbir12341'
-                    },
-                    {
-                        icon: 'fa-exchange-alt',
-                        title: 'Multi-Platform Data Automation',
-                        description: 'A comprehensive workflow that syncs data across multiple platforms (CRM, Email, Spreadsheets) in real-time, eliminating manual data entry and ensuring data consistency.',
-                        badges: ['n8n', 'REST APIs', 'Database', 'JavaScript'],
-                        github: 'https://github.com/Sabbir12341',
-                        demo: 'https://github.com/Sabbir12341'
-                    },
-                    {
-                        icon: 'fa-bell',
-                        title: 'API Monitoring & Alert System',
-                        description: 'A real-time monitoring solution that tracks API health, response times, and error rates. Sends instant alerts via Slack and email when issues are detected.',
-                        badges: ['Node.js', 'REST API', 'MongoDB', 'Slack API'],
-                        github: 'https://github.com/Sabbir12341',
-                        demo: 'https://github.com/Sabbir12341'
-                    },
-                    {
-                        icon: 'fa-chart-line',
-                        title: 'HAR Optimization using Custom SVM',
-                        description: 'An advanced machine learning model using Support Vector Machines to optimize HTTP Archive (HAR) files for web performance, reducing load times and bandwidth usage.',
-                        badges: ['Python', 'Machine Learning', 'SVM', 'Data Analysis'],
-                        github: 'https://github.com/Sabbir12341',
-                        demo: 'https://github.com/Sabbir12341'
-                    }
-                ],
-                contact: {
-                    email: 'khandokarsabbirahmed12@gmail.com',
-                    linkedin: 'https://www.linkedin.com/in/sabbir-ahmed-9537231ba/',
-                    github: 'https://github.com/Sabbir12341'
-                }
-            };
+            // Content lives in /site-content.js (loaded in <head>); return a fresh copy
+            return JSON.parse(JSON.stringify(window.PORTFOLIO_CONTENT));
         }
 
         // Save content to API
@@ -1239,14 +1100,16 @@ async function saveSiteData() {
                                 ${project.badges.map(b => `<span class="tech-badge">${escapeHtml(b)}</span>`).join('')}
                             </div>
                             <div class="flex gap-3">
-                                <a href="${escapeHtml(project.github)}" target="_blank" class="btn-small">
+                                ${project.github ? `
+                                <a href="${escapeHtml(project.github)}" target="_blank" rel="noopener" class="btn-small">
                                     <i class="fab fa-github"></i>
                                     <span>GitHub</span>
-                                </a>
-                                <a href="${escapeHtml(project.demo)}" target="_blank" class="btn-small">
+                                </a>` : ''}
+                                ${project.demo ? `
+                                <a href="${escapeHtml(project.demo)}" target="_blank" rel="noopener" class="btn-small">
                                     <i class="fas fa-external-link-alt"></i>
-                                    <span>Demo</span>
-                                </a>
+                                    <span>${escapeHtml(project.demoLabel || 'Demo')}</span>
+                                </a>` : ''}
                             </div>
                         </div>
                     </div>
@@ -1290,7 +1153,7 @@ async function saveSiteData() {
         }
 
         function renderFooter() {
-            document.getElementById('footerYear').textContent = siteData.footerYear;
+            document.getElementById('footerYear').textContent = siteData.footerYear || new Date().getFullYear();
         }
 
         function renderSite() {
@@ -1735,7 +1598,9 @@ async function saveSiteData() {
         });
 
         window.addEventListener('load', async () => {
-            await loadSiteData();
+            // Show the bundled content right away (the API can take a while
+            // to wake up), then replace it with the saved content.
+            siteData = getDefaultSiteData();
             renderSite();
             document.querySelectorAll('.fade-in-up').forEach((element, index) => {
                 element.style.opacity = '0';
@@ -1745,6 +1610,8 @@ async function saveSiteData() {
                     element.style.animationDelay = `${index * 0.2}s`;
                 }, 100);
             });
+            await loadSiteData();
+            renderSite();
         });
     </script>
 </body>

@@ -4,8 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 // ====================== IMPORTS ======================
-const connectDB = require('./config/database');
-const SiteContent = require('./models/SiteContent');
+const { checkConnection } = require('./config/supabase');
 
 // ====================== ROUTES ======================
 const adminRoutes = require('./routes/admin');
@@ -53,36 +52,8 @@ app.get('*', (req, res) => {
 // ====================== INIT ADMIN & START SERVER ======================
 const startServer = async () => {
     try {
-        // Connect to MongoDB
-        await connectDB();
-
-        // Initialize admin if not exists
-        const content = await SiteContent.findOne();
-        if (!content) {
-            await SiteContent.create({
-                hero: {
-                    title: "Sabbir Ahmed",
-                    subtitle: "AI Automation Engineer",
-                    tagline: "Building intelligent systems",
-                    profileImage: "/api/uploads/profile-placeholder.png"
-                },
-                about: { paragraph1: "", paragraph2: "", paragraph3: "" },
-                skills: [],
-                projects: [],
-                contact: {
-                    email: "your-email@example.com",
-                    linkedin: "",
-                    github: ""
-                },
-                admin: {
-                    username: "admin",
-                    password: "admin123"
-                }
-            });
-            console.log("✅ Default Admin Created → admin / admin123");
-        } else {
-            console.log("ℹ️ Admin already exists");
-        }
+        // Connect to Supabase (also creates the content row on first run)
+        await checkConnection();
 
         // Start server
         app.listen(port, () => {
@@ -91,7 +62,8 @@ const startServer = async () => {
             console.log(`📱 API Health → http://localhost:${port}/api/health`);
         });
     } catch (err) {
-        console.error('Failed to start server:', err);
+        console.error('Failed to start server:', err.message || err);
+        console.error('   Did you run backend/supabase/schema.sql in the Supabase SQL Editor?');
         process.exit(1);
     }
 };

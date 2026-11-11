@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const SiteContent = require('../models/SiteContent');
-const Message = require('../models/Message');
+const { supabase, getSiteContent, updateSiteContent } = require('../config/supabase');
 
 // Admin login
 router.post('/login', async (req, res) => {
@@ -12,15 +11,11 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ error: 'Username and password required' });
         }
 
-        const content = await SiteContent.findOne();
-
-        if (!content) {
-            return res.status(401).json({ error: 'Admin not initialized' });
-        }
+        const content = await getSiteContent();
 
         if (
-            username === content.admin.username &&
-            password === content.admin.password
+            username === content.admin_username &&
+            password === content.admin_password
         ) {
             return res.json({ success: true, message: 'Login successful' });
         }
@@ -36,13 +31,27 @@ router.post('/login', async (req, res) => {
 // Get stats
 router.get('/stats', async (req, res) => {
     try {
-        const messages = await Message.find().sort({ timestamp: -1 }).limit(5);
-        const total = await Message.countDocuments();
+        const { data, count, error } = await supabase
+            .from('messages')
+            .select('*', { count: 'exact' })
+            .order('created_at', { ascending: false })
+            .limit(5);
+        if (error) throw error;
+
+        // Same shape the admin page expects (it was built for MongoDB)
+        const recentMessages = data.map(m => ({
+            _id: m.id,
+            name: m.name,
+            email: m.email,
+            subject: m.subject,
+            message: m.message,
+            timestamp: m.created_at
+        }));
 
         res.json({
             visitors: 0,
-            messages: total,
-            recentMessages: messages
+            messages: count,
+            recentMessages
         });
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -52,7 +61,11 @@ router.get('/stats', async (req, res) => {
 // Delete message
 router.delete('/messages/:id', async (req, res) => {
     try {
-        await Message.findByIdAndDelete(req.params.id);
+        const { error } = await supabase
+            .from('messages')
+            .delete()
+            .eq('id', req.params.id);
+        if (error) throw error;
         res.json({ success: true });
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -68,18 +81,19 @@ router.put('/credentials', async (req, res) => {
             return res.status(400).json({ error: 'All fields are required' });
         }
 
-        const content = await SiteContent.findOne();
+        const content = await getSiteContent();
 
         if (
-            currentUsername !== content.admin.username ||
-            currentPassword !== content.admin.password
+            currentUsername !== content.admin_username ||
+            currentPassword !== content.admin_password
         ) {
             return res.status(401).json({ error: 'Current credentials are incorrect' });
         }
 
-        content.admin.username = newUsername;
-        content.admin.password = newPassword;
-        await content.save();
+        await updateSiteContent({
+            admin_username: newUsername,
+            admin_password: newPassword
+        });
 
         res.json({ success: true, message: 'Admin credentials updated successfully' });
 
