@@ -74,8 +74,7 @@ Content defaults live in [`frontend/public/site-content.js`](frontend/public/sit
 To push them to the database:
 
 ```bash
-node backend/scripts/sync-content.js                        # live API
-node backend/scripts/sync-content.js http://localhost:3001  # local
+node backend/scripts/sync-content.js   # writes straight to Supabase (uses backend/.env)
 ```
 
 ## 🎯 Links

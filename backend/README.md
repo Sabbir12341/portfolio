@@ -73,19 +73,22 @@ Push changes to GitHub, Render will auto-deploy
 
 ## API Endpoints
 
+🔒 = needs `Authorization: Bearer <token>`. Get the token from `POST /api/admin/login`;
+it lasts 12 hours and stops working as soon as the admin password changes.
+
 ### Content
 - `GET /api/content` - Get all site content
-- `PUT /api/content` - Update content section
-- `POST /api/contact` - Submit contact form
+- `PUT /api/content` - Update content section 🔒
+- `POST /api/content/contact` - Submit contact form
 
 ### Admin
-- `POST /api/admin/login` - Admin login
-- `GET /api/admin/stats` - Get stats
-- `DELETE /api/admin/messages/:id` - Delete message
-- `PUT /api/admin/credentials` - Update admin credentials
+- `POST /api/admin/login` - Admin login, returns `{ token, expiresAt }` (10 failed tries per IP → 15 min block)
+- `GET /api/admin/stats` - Get stats 🔒
+- `DELETE /api/admin/messages/:id` - Delete message 🔒
+- `PUT /api/admin/credentials` - Update admin credentials 🔒 (new password: min. 8 characters, stored as a scrypt hash)
 
 ### Upload
-- `POST /api/upload/profile-image` - Upload profile image
+- `POST /api/upload/profile-image` - Upload profile image 🔒
 
 ## Project Structure
 

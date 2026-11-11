@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { supabase, PUBLIC_SECTIONS, getSiteContent, updateSiteContent } = require('../config/supabase');
+const { requireAdmin } = require('../middleware/auth');
 
 // Get all content
 router.get('/', async (req, res) => {
@@ -17,8 +18,8 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Update content section
-router.put('/', async (req, res) => {
+// Update content section (admin only)
+router.put('/', requireAdmin, async (req, res) => {
     try {
         const { section, data } = req.body;
 

@@ -5,6 +5,7 @@ require('dotenv').config();
 
 // ====================== IMPORTS ======================
 const { checkConnection } = require('./config/supabase');
+const { requireAdmin } = require('./middleware/auth');
 
 // ====================== ROUTES ======================
 const adminRoutes = require('./routes/admin');
@@ -14,6 +15,9 @@ const uploadRoutes = require('./routes/upload');
 // ====================== EXPRESS APP ======================
 const app = express();
 const port = process.env.PORT || 3001;
+
+// Render sits behind one proxy: use the real client IP (for the login rate limit)
+app.set('trust proxy', 1);
 
 // ====================== MIDDLEWARE ======================
 app.use(cors());
@@ -32,7 +36,7 @@ app.use('/api/uploads', express.static(path.join(__dirname, '../uploads')));
 // ====================== ROUTES ======================
 app.use('/api/admin', adminRoutes);
 app.use('/api/content', contentRoutes);
-app.use('/api/upload', uploadRoutes);
+app.use('/api/upload', requireAdmin, uploadRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
